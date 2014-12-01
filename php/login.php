@@ -1,62 +1,33 @@
-<!-- este taller lo realice en compañia de nico luna que me explico y me ayudo -->
+<html>
+    <head>
+        <title>Iniciar Sesión</title>
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css" />
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+       
 
-<?php 
-session_start(); 
-include_once "conexion.php"; 
-  
-function verificar_login($user,$password,&$result) { 
+    </head>
 
-    $sql = "SELECT * FROM usuarios WHERE usuario = '$user' and password = '$password'"; 
-    $rec = mysql_query($sql); 
-    $count = 0; 
-  
-    while($row = mysqli_fetch_object($rec)) 
-    { 
-        $count++; 
-        $result = $row; 
-    } 
-  
-    if($count == 1) 
-    { 
-        return 1; 
-    } 
-  
-    else 
-    { 
-        return 0; 
-    } 
-} 
-  
- 
-if(!isset($_SESSION['userid'])) 
-{ 
+    <body>
 
-    if(isset($_POST['login'])) 
-    { 
-        if(verificar_login($_POST['user'],$_POST['password'],$result) == 1) 
-        { 
-            $_SESSION['userid'] = $result->idusuario; 
-            $_SESSION['user'] = $result->usuario; 
-            header("location:tabla.php"); 
+        <h1>Log In</h1>
+        
+        <form class="form" action="paraLogin.php" method="POST">
+            <br />Nombre de usuario:
+            <br />
+            <input type="text" class="form-control" name="login">
+            <br />Clave:
+            <br />
+            <input type="password" class="form-control" name="pass">
+            <br />
+            <br />
+            <input class="btn btn-primary" type="submit" value="Ingresar">
+        </form>
 
-        } 
-        else 
-        { 
-            echo '<div class="error">Su usuario es incorrecto, intente nuevamente.</div>'; 
-        } 
-    } 
-?> 
+        <p><a href="registro.php">Registrase</a></p>
 
-  
-<form action="" method="post" class="login"> 
-    <div><label>Username</label><input name="user" type="text" ></div> 
-    <div><label>Password</label><input name="password" type="password"></div> 
-    <div><input name="login" type="submit" value="login"></div> 
-    <div><a href="index.php">Register</a></div> 
-</form> 
-<?php 
-} else { 
-    echo 'Su usuario ingreso correctamente.'; 
-    echo '<a href="logout.php">Logout</a>'; 
-} 
-?>
+    </body>
+</html>

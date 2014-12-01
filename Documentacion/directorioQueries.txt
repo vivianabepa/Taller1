@@ -1,0 +1,25 @@
+	
+	SELECT * FROM usuarios ORDER BY login ASC
+
+		Este query me sirve para seleccionar el nombre del estudiante en la parte de tareas para mostrarlos ordenados en el formulario de tareas
+
+	SELECT * FROM `tareas`
+
+		Este query me sirve para seleccionar todos los datos de la tabla.	
+
+	INSERT INTO `estudiantes_web`.`tareas` (`Codigo`, `FechaIn`, `FechaFn`, `Prioridad`, `Tarea`, `Descripcion`, `Estudiante`) VALUES 
+	('{$_POST['Codigo']}','{$_POST['FechaIn']}','{$_POST['FechaFn']}','{$_POST['Prioridad']}','{$_POST['Tarea']}','{$_POST['Descripcion']}','{$_POST['Estudiantes']}');
+
+		Este query me sirve para insertar los datos en la tabla de tareas (agregar tareas)
+	
+
+	SELECT login FROM usuarios WHERE usuarios.login = '%s'
+
+		Este query me sirve para que seleccione los datos de un usuario especifico despues de haberse registrado.
+
+
+
+	SELECT usuarios.id, usuarios.login, usuarios.nombre, usuarios.email, usuarios.password
+	FROM usuarios WHERE usuarios.login='%s'&& usuarios.password = '%s'
+
+		Este query me sirve para devolver los datos de un usuario especifico
